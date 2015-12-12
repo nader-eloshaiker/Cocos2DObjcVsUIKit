@@ -1,6 +1,6 @@
 # Cocos2D-Objc vs UIKit #
 
-Demo rendering UIViews and CCNodes along with UILabels and CCLabelBMFont.
+Demo for [Odecee](http://odecee.com.au) Mobile:Sync, rendering UIView and CCNode along with UILabel and CCLabelTTF.
 
 ### What is this repository for? ###
 
