@@ -2,8 +2,8 @@
 //  HelloWorldScene.h
 //
 //  Created by : Nader Eloshaiker
-//  Project    : Cocos2DObjcVsUIKit
-//  Date       : 12/12/2015
+//  Project    : CALayerRendering
+//  Date       : 30/11/2015
 //
 //  Copyright (c) 2015 Nader Eloshaiker.
 //  All rights reserved.

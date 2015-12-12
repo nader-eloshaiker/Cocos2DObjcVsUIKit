@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //
 //  Created by : Nader Eloshaiker
-//  Project    : Cocos2DObjcVsUIKit
-//  Date       : 12/12/2015
+//  Project    : CALayerRendering
+//  Date       : 30/11/2015
 //
 //  Copyright (c) 2015 Nader Eloshaiker.
 //  All rights reserved.
@@ -12,6 +12,8 @@
 
 #import "AppDelegate.h"
 #import "HelloWorldScene.h"
+
+
 
 // -----------------------------------------------------------------------
 
@@ -36,6 +38,8 @@
     [CCFileUtils sharedFileUtils].suffixesDict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                                   @"-2x", CCFileUtilsSuffixiPad,
                                                   @"-4x", CCFileUtilsSuffixiPadHD,
+                                                  @"-4x", CCFileUtilsSuffixiPhone6PlusHD,
+                                                  @"-2x", CCFileUtilsSuffixiPhone6Plus,
                                                   @"-1x", CCFileUtilsSuffixiPhone,
                                                   @"-1x", CCFileUtilsSuffixiPhoneHD,
                                                   @"-1x", CCFileUtilsSuffixiPhone5,
@@ -46,6 +50,8 @@
     // Show FPS
     // We really want this when developing an app
     [startUpOptions setObject:@(YES) forKey:CCSetupShowDebugStats];
+    [startUpOptions setObject:CCScreenOrientationPortrait forKey:CCSetupScreenOrientation];
+    [startUpOptions setObject:@(GL_DEPTH24_STENCIL8_OES) forKey:CCSetupDepthFormat];
     
     // A acouple of other examples
     
@@ -67,6 +73,15 @@
     // We are done ...
     // Lets get this thing on the road!
     [self setupCocos2dWithOptions:startUpOptions];
+    
+    NSInteger device = [[CCConfiguration sharedConfiguration] runningDevice];
+    if (device == CCDeviceiPhone6 || device == CCDeviceiPhone6Plus) {
+        
+        [CCDirector sharedDirector].contentScaleFactor *= [UIScreen mainScreen].bounds.size.height/568.0;
+        [[CCFileUtils sharedFileUtils] setiPadContentScaleFactor:2.0];
+        
+    }
+
 	
     // Stay positive. Always return a YES :)
 	return YES;
@@ -77,10 +92,10 @@
 
 - (CCScene *)startScene
 {
-	return [HelloWorldScene new];
+
+    return [HelloWorldScene new];
 }
 
-// -----------------------------------------------------------------------
 
 @end
 
